@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OLGAR Imports — Camisas Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+<!-- BOTÃO WHATSAPP FLUTUANTE -->
+<a class="whatsapp-btn"
+   href="https://wa.me/5554996808859?text=Olá!%20Tenho%20interesse%20nas%20camisas%20da%20OLGAR%20Imports."
+   target="_blank" title="Fale conosco no WhatsApp">
+  <img src="img/site/whatsapp.png" alt="WhatsApp">
+</a>
+
+<!-- NAVEGAÇÃO -->
+<nav>
+  <a href="#inicio" class="nav-logo">
+    <img id="logo-nav" src="img/site/logo_colorido.png" alt="OLGAR Imports">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#diferenciais">Por que nós</a></li>
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#contato" class="nav-cta">Encomendar</a></li>
+  </ul>
+  <button id="btn-tema" class="btn-tema" title="Alternar modo claro/escuro">🌙</button>
+</nav>
+
+<!-- HERO — camisa destaque: Brasil Amarela -->
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <span class="hero-tag">✦ Nova coleção disponível</span>
+    <h1 class="hero-titulo">Camisas que<br>elevam seu <em>estilo</em></h1>
+    <p class="hero-subtitulo">Peças selecionadas com qualidade superior. A OLGAR Imports traz o melhor em camisas importadas para você vestir com classe e personalidade.</p>
+    <div class="hero-botoes">
+      <a href="#catalogo" class="btn-primario">Ver catálogo</a>
+      <a href="#contato" class="btn-secundario">Encomendar</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Modelos</span></div>
+      <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Satisfação</span></div>
+      <div class="stat"><span class="stat-num">5★</span><span class="stat-label">Avaliação</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="camisa-destaque">
+        <span class="badge-novo">Destaque</span>
+        <img src="img/camisas/seleção/brasil_amarela.jpg" alt="Brasil Amarela" style="width:100%;height:100%;object-fit:cover;border-radius:2px;">
+      </div>
+      <div class="camisa-info">
+        <h3>Brasil Amarela 2026</h3>
+        <p>Seleção Brasileira — edição oficial</p>
+      </div>
+      <div class="camisa-preco">
+        <span class="preco">R$ 159,90</span>
+        <button class="btn-mini">Quero esta</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="secao-tag">Por que escolher a OLGAR</div>
+  <h2 class="secao-titulo">Qualidade que<br>você sente</h2>
+  <p class="secao-sub">Cada camisa é cuidadosamente selecionada para garantir estilo, durabilidade e o melhor custo-benefício.</p>
+  <div class="diferenciais-grid">
+    <div class="diferencial-item">
+      <span class="dif-icone">👑</span>
+      <h3 class="dif-titulo">Qualidade Premium</h3>
+      <p class="dif-texto">Selecionamos apenas peças de alta qualidade, com tecidos superiores e acabamento impecável em cada detalhe.</p>
+    </div>
+    <div class="diferencial-item">
+      <span class="dif-icone">📦</span>
+      <h3 class="dif-titulo">Entrega Garantida</h3>
+      <p class="dif-texto">Envio seguro para todo o Brasil. Suas peças chegam protegidas e dentro do prazo combinado.</p>
+    </div>
+    <div class="diferencial-item">
+      <span class="dif-icone">💜</span>
+      <h3 class="dif-titulo">Curadoria Exclusiva</h3>
+      <p class="dif-texto">Não vendemos qualquer coisa. Cada modelo passa pela nossa curadoria rigorosa antes de chegar ao catálogo.</p>
+    </div>
+    <div class="diferencial-item">
+      <span class="dif-icone">💬</span>
+      <h3 class="dif-titulo">Atendimento Real</h3>
+      <p class="dif-texto">Fale diretamente conosco pelo WhatsApp. Respondemos rápido e ajudamos você a encontrar a camisa ideal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  CATÁLOGO — COMO ADICIONAR UMA CAMISA NOVA
+  ══════════════════════════════════════════
+  1. Coloque a foto em: img/camisas/seleção/ ou img/camisas/clubes/
+  2. Copie um bloco abaixo e cole antes de: ADICIONE NOVOS AQUI
+  3. Ajuste data-categoria para "Seleções" ou "Clubes"
+  ============================================================ -->
+<section id="catalogo">
+  <div class="catalogo-header">
+    <div>
+      <div class="secao-tag">Nosso catálogo</div>
+      <h2 class="secao-titulo">Escolha a sua favorita</h2>
+    </div>
+    <div class="filtros">
+      <button class="filtro-btn ativo">Todos</button>
+      <button class="filtro-btn">Seleções</button>
+      <button class="filtro-btn">Clubes</button>
+    </div>
+  </div>
+
+  <div class="produtos-grid">
+
+    <!-- SELEÇÃO 1 — Brasil Amarela -->
+    <div class="produto-card" data-categoria="Seleções">
+      <div class="produto-img">
+        <span class="produto-badge badge-destaque">Destaque</span>
+        <img src="img/camisas/seleção/brasil_amarela.jpg" alt="Brasil Amarela">
+      </div>
+      <div class="produto-info">
+        <div class="produto-cat">Seleções</div>
+        <h3 class="produto-nome">Brasil Amarela 2026</h3>
+        <p class="produto-desc">A camisa mais icônica do futebol. Verde e amarelo que fazem o coração bater mais forte.</p>
+        <div class="produto-footer">
+          <div class="produto-preco">R$ 159,90</div>
+          <div class="tamanhos">
+            <div class="tam">P</div><div class="tam">M</div><div class="tam">G</div><div class="tam">GG</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SELEÇÃO 2 — Brasil Azul -->
+    <div class="produto-card" data-categoria="Seleções">
+      <div class="produto-img">
+        <span class="produto-badge badge-novo2">Novo</span>
+        <img src="img/camisas/seleção/brasil_azul.jpg" alt="Brasil Azul">
+      </div>
+      <div class="produto-info">
+        <div class="produto-cat">Seleções</div>
+        <h3 class="produto-nome">Brasil Azul 2026</h3>
+        <p class="produto-desc">O segundo uniforme da Seleção com o azul que representa nossa riqueza natural.</p>
+        <div class="produto-footer">
+          <div class="produto-preco">R$ 159,90</div>
+          <div class="tamanhos">
+            <div class="tam">P</div><div class="tam">M</div><div class="tam">G</div><div class="tam">GG</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SELEÇÃO 3 — Argentina -->
+    <div class="produto-card" data-categoria="Seleções">
+      <div class="produto-img">
+        <img src="img/camisas/seleção/agentina_2026.jpg" alt="Argentina">
+      </div>
+      <div class="produto-info">
+        <div class="produto-cat">Seleções</div>
+        <h3 class="produto-nome">Argentina 2026</h3>
+        <p class="produto-desc">A camisa dos campeões do mundo. Listras azul e branca com tradição e garra.</p>
+        <div class="produto-footer">
+          <div class="produto-preco">R$ 159,90</div>
+          <div class="tamanhos">
+            <div class="tam">P</div><div class="tam">M</div><div class="tam">G</div><div class="tam">GG</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SELEÇÃO 4 — Portugal -->
+    <div class="produto-card" data-categoria="Seleções">
+      <div class="produto-img">
+        <img src="img/camisas/seleção/portugal.jpg" alt="Portugal">
+      </div>
+      <div class="produto-info">
+        <div class="produto-cat">Seleções</div>
+        <h3 class="produto-nome">Portugal 2026</h3>
+        <p class="produto-desc">O vermelho e verde da seleção portuguesa com design moderno e acabamento premium.</p>
+        <div class="produto-footer">
+          <div class="produto-preco">R$ 159,90</div>
+          <div class="tamanhos">
+            <div class="tam">P</div><div class="tam">M</div><div class="tam">G</div><div class="tam">GG</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLUBE 1 — Grêmio -->
+    <div class="produto-card" data-categoria="Clubes">
+      <div class="produto-img">
+        <img src="img/camisas/clubes/gremio_2026.webp" alt="Grêmio">
+      </div>
+      <div class="produto-info">
+        <div class="produto-cat">Clubes</div>
+        <h3 class="produto-nome">Grêmio 2026</h3>
+        <p class="produto-desc">O manto imortal do Tricolor Gaúcho. Azul, preto e branco que representam uma das maiores torcidas do Brasil.</p>
+        <div class="produto-footer">
+          <div class="produto-preco">R$ 144,90</div>
+          <div class="tamanhos">
+            <div class="tam">P</div><div class="tam">M</div><div class="tam">G</div><div class="tam">GG</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLUBE 2 — Internacional -->
+    <div class="produto-card" data-categoria="Clubes">
+      <div class="produto-img">
+        <img src="img/camisas/clubes/inter_2026.webp" alt="Internacional">
+      </div>
+      <div class="produto-info">
+        <div class="produto-cat">Clubes</div>
+        <h3 class="produto-nome">Internacional 2026</h3>
+        <p class="produto-desc">O vermelho do Colorado que pulsa forte no coração do Rio Grande do Sul e do Brasil.</p>
+        <div class="produto-footer">
+          <div class="produto-preco">R$ 144,90</div>
+          <div class="tamanhos">
+            <div class="tam">P</div><div class="tam">M</div><div class="tam">G</div><div class="tam">GG</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADICIONE NOVOS PRODUTOS AQUI -->
+
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-visual">
+    <img id="logo-sobre" class="sobre-logo" src="img/site/logo_preta.png" alt="OLGAR Imports">
+    <p class="sobre-logo-sub">OLGAR Imports</p>
+  </div>
+  <div class="sobre-texto">
+    <div class="secao-tag">Quem somos</div>
+    <h2 class="secao-titulo">Mais do que camisas.<br>É estilo de vida.</h2>
+    <p>A OLGAR Imports nasceu da paixão por moda e qualidade. Somos especializados em curadoria e revenda de camisas importadas que unem estilo, conforto e durabilidade.</p>
+    <p>Cada peça é escolhida a dedo para garantir que você encontre o que há de melhor — seja para o trabalho, para sair com amigos ou para uma ocasião especial.</p>
+    <ul class="sobre-lista">
+      <li>Atendimento personalizado via WhatsApp</li>
+      <li>Coleções renovadas constantemente</li>
+      <li>Preços justos com qualidade premium</li>
+    </ul>
+    <a href="#contato" class="btn-primario" style="width: fit-content;">Fale conosco agora</a>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="secao-tag">Entre em contato</div>
+  <h2 class="secao-titulo">Vamos falar sobre<br>a sua camisa?</h2>
+  <p class="secao-sub">Preencha o formulário ou fale direto pelo WhatsApp. Respondemos rapidinho!</p>
+  <div class="contato-grid">
+    <form class="contato-form">
+      <div class="form-row">
+        <div class="form-campo">
+          <label for="nome">Nome</label>
+          <input id="nome" type="text" placeholder="Seu nome completo" required>
+        </div>
+        <div class="form-campo">
+          <label for="tel">Telefone</label>
+          <input id="tel" type="tel" placeholder="(xx) xxxxx-xxxx" required>
+        </div>
+      </div>
+      <div class="form-campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" placeholder="seu@email.com" required>
+      </div>
+      <div class="form-campo">
+        <label for="interesse">Tenho interesse em</label>
+        <select id="interesse" required>
+          <option value="">Selecione o tipo de camisa...</option>
+          <option>Brasil Amarela</option>
+          <option>Brasil Azul</option>
+          <option>Argentina</option>
+          <option>Portugal</option>
+          <option>Grêmio</option>
+          <option>Internacional</option>
+          <option>Quero ver o catálogo completo</option>
+        </select>
+      </div>
+      <div class="form-campo">
+        <label for="msg">Mensagem</label>
+        <textarea id="msg" rows="4" placeholder="Descreva o que está procurando, tamanhos, quantidades..." required></textarea>
+      </div>
+      <button type="submit" class="btn-primario" style="width: 100%; padding: 1rem;">Enviar mensagem</button>
+    </form>
+    <div class="contato-info">
+      <div class="info-item">
+        <div class="info-label">WhatsApp</div>
+        <div class="info-valor">
+          <img src="img/site/whatsapp.png" alt="WhatsApp" class="icone-contato">
+          (54) 9 9680-8859
+        </div>
+        <div class="info-desc">Atendimento rápido de seg. a sáb., das 8h às 20h</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Instagram</div>
+        <div class="info-valor">
+          <img src="img/site/instagram.png" alt="Instagram" class="icone-contato">
+          @olgaroficial
+        </div>
+        <div class="info-desc">Veja looks, novidades e coleções em tempo real</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">E-mail</div>
+        <div class="info-valor">✉️ olgaroficial@gmail.com</div>
+        <div class="info-desc">Para pedidos em atacado ou parcerias</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Envio</div>
+        <div class="info-valor">📦 Para todo o Brasil</div>
+        <div class="info-desc">Correios e transportadoras parceiras. Prazo de 15 a 20 dias úteis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-logo-img" src="img/site/logo_branca.png" alt="OLGAR Imports">
+  <span>© 2026 OLGAR Imports — Todos os direitos reservados</span>
+  <div class="footer-links">
+    <a href="#inicio">Início</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#contato">Contato</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1057 @@
+/* ============================================================
+   OLGAR IMPORTS — style.css
+   
+   MODO DARK/LIGHT:
+   O tema é controlado pelo atributo [data-theme] no <html>.
+   - Claro:  <html data-theme="light">
+   - Escuro: <html data-theme="dark">
+   O JavaScript em script.js troca automaticamente ao clicar
+   no botão de tema.
+   ============================================================ */
+
+/* ===== FONTES ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Raleway:wght@300;400;500;600&display=swap');
+
+/* ===== RESET ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   VARIÁVEIS DE TEMA
+   ============================================================ */
+
+/* --- MODO CLARO (padrão) --- */
+:root,
+[data-theme="light"] {
+  --roxo:          #7B3FA0;
+  --roxo-escuro:   #5a2d75;
+  --roxo-claro:    #b06fd4;
+  --roxo-bg:       #f5eefa;
+
+  --bg-principal:  #fafaf8;
+  --bg-secundario: #ffffff;
+  --bg-escura:     #0e0e0e;      /* seções escuras fixas */
+  --bg-card:       #ffffff;
+
+  --texto:         #0e0e0e;
+  --texto-inv:     #fafaf8;      /* texto em fundos escuros */
+  --texto-suave:   #666666;
+  --texto-muted:   #888888;
+
+  --borda:         #e0d0ec;
+  --borda-suave:   #eeeeee;
+
+  --nav-bg:        rgba(250, 250, 248, 0.92);
+  --card-shadow:   0 20px 60px rgba(123, 63, 160, 0.15);
+
+  /* Logo que aparece no header (modo claro = logo colorida ou preta) */
+  --logo-nav: url('OLGAR_-_COLORIDO.jpeg');
+
+  /* Logo na seção Sobre */
+  --logo-sobre-filter: none;
+}
+
+/* --- MODO ESCURO --- */
+[data-theme="dark"] {
+  --roxo:          #9f5ec7;
+  --roxo-escuro:   #7B3FA0;
+  --roxo-claro:    #c590e0;
+  --roxo-bg:       #1e1228;
+
+  --bg-principal:  #111111;
+  --bg-secundario: #1a1a1a;
+  --bg-escura:     #0a0a0a;
+  --bg-card:       #1e1e1e;
+
+  --texto:         #f0f0ee;
+  --texto-inv:     #f0f0ee;
+  --texto-suave:   #aaaaaa;
+  --texto-muted:   #777777;
+
+  --borda:         #3a2a4a;
+  --borda-suave:   #2a2a2a;
+
+  --nav-bg:        rgba(17, 17, 17, 0.95);
+  --card-shadow:   0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--bg-principal);
+  color: var(--texto);
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ============================================================
+   NAVEGAÇÃO
+   ============================================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--borda);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+/* -------------------------------------------------------
+   LOGO NO NAV
+   Para usar sua logo real, substitua o <img> no HTML:
+     - Modo claro: OLGAR_-_COLORIDO.jpeg  (ou BRANCO_E_PRETO)
+     - Modo escuro: OLGAR_-_PRETO_E_BRANCO.jpeg (logo branca)
+   O JavaScript troca o src automaticamente.
+   ------------------------------------------------------- */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 42px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  display: block; /* garante que a imagem não some por ser inline */
+}
+
+.nav-logo-texto {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--texto);
+  transition: color 0.3s;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--texto);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--roxo); }
+
+.nav-cta {
+  background: var(--roxo) !important;
+  color: #fff !important;
+  padding: 0.5rem 1.4rem;
+  border-radius: 2px;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--roxo-escuro) !important; }
+
+/* Botão de alternar tema */
+.btn-tema {
+  background: transparent;
+  border: 1px solid var(--borda);
+  border-radius: 2px;
+  color: var(--texto);
+  cursor: pointer;
+  font-size: 1.1rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-left: 1rem;
+}
+
+.btn-tema:hover {
+  border-color: var(--roxo);
+  color: var(--roxo);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 4rem 4rem 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--roxo);
+  border: 1px solid var(--roxo-claro);
+  padding: 0.3rem 0.9rem;
+  border-radius: 1px;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+.hero-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1.05;
+  font-weight: 900;
+  color: var(--texto);
+  margin-bottom: 1.5rem;
+}
+
+.hero-titulo em {
+  color: var(--roxo);
+  font-style: italic;
+}
+
+.hero-subtitulo {
+  font-size: 1rem;
+  color: var(--texto-suave);
+  line-height: 1.8;
+  max-width: 400px;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.hero-botoes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--borda);
+}
+
+.stat { display: flex; flex-direction: column; }
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--roxo);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--texto-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+}
+
+.hero-right {
+  background: var(--roxo-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 3rem 3rem;
+  transition: background 0.3s;
+}
+
+.hero-right::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 300px; height: 300px;
+  border: 40px solid rgba(123, 63, 160, 0.12);
+  border-radius: 50%;
+}
+
+.hero-right::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 180px; height: 180px;
+  border: 25px solid rgba(123, 63, 160, 0.08);
+  border-radius: 50%;
+}
+
+.hero-card {
+  background: var(--bg-card);
+  border-radius: 4px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--card-shadow);
+  transition: background 0.3s;
+}
+
+.camisa-destaque {
+  width: 100%;
+  height: 320px;
+  background: var(--roxo-bg);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 7rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--borda);
+}
+
+.badge-novo {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: var(--roxo);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 1px;
+}
+
+.camisa-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--texto);
+}
+
+.camisa-info p {
+  font-size: 0.82rem;
+  color: var(--texto-muted);
+}
+
+.camisa-preco {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.preco {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--roxo);
+}
+
+/* ============================================================
+   BOTÕES GLOBAIS
+   ============================================================ */
+.btn-primario {
+  background: var(--roxo);
+  color: #fff;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 2px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+
+.btn-primario:hover {
+  background: var(--roxo-escuro);
+  transform: translateY(-2px);
+}
+
+.btn-secundario {
+  background: transparent;
+  color: var(--texto);
+  padding: 0.9rem 2rem;
+  border: 1.5px solid var(--texto);
+  border-radius: 2px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-secundario:hover {
+  border-color: var(--roxo);
+  color: var(--roxo);
+}
+
+.btn-mini {
+  background: var(--roxo);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-mini:hover { background: var(--roxo-escuro); }
+
+/* ============================================================
+   SEÇÕES — BASE COMUM
+   ============================================================ */
+section { padding: 6rem 5rem; }
+
+.secao-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--roxo);
+  margin-bottom: 0.75rem;
+}
+
+.secao-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: var(--texto);
+}
+
+.secao-sub {
+  font-size: 1rem;
+  color: var(--texto-suave);
+  line-height: 1.8;
+  max-width: 500px;
+}
+
+/* ============================================================
+   SEÇÃO DIFERENCIAIS
+   Fundo sempre escuro — ignora o tema claro/escuro
+   ============================================================ */
+#diferenciais {
+  background: #0e0e0e;
+  color: #fafaf8;
+}
+
+#diferenciais .secao-titulo { color: #fafaf8; }
+#diferenciais .secao-sub    { color: #aaaaaa; }
+
+.diferenciais-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 4rem;
+}
+
+.diferencial-item {
+  background: #1a1a1a;
+  padding: 2.5rem 2rem;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+.diferencial-item:hover { background: #222; }
+
+.dif-icone {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.dif-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--roxo-claro);
+  margin-bottom: 0.75rem;
+}
+
+.dif-texto {
+  font-size: 0.88rem;
+  color: #888;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   SEÇÃO CATÁLOGO
+   ============================================================ */
+#catalogo { background: var(--bg-principal); }
+
+.catalogo-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filtros { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.filtro-btn {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--borda);
+  background: transparent;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-muted);
+  border-radius: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filtro-btn.ativo,
+.filtro-btn:hover {
+  background: var(--roxo);
+  color: #fff;
+  border-color: var(--roxo);
+}
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.produto-card {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  cursor: pointer;
+}
+
+.produto-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(123, 63, 160, 0.15);
+}
+
+.produto-img {
+  height: 260px;
+  background: var(--roxo-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.produto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* mostra a imagem inteira sem cortar */
+  display: block;
+  padding: 0.5rem;       /* pequena margem para não encostar nas bordas */
+}
+
+.produto-badge {
+  position: absolute;
+  top: 0.75rem; left: 0.75rem;
+  z-index: 1;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 1px;
+}
+
+.badge-destaque { background: var(--roxo);   color: #fff; }
+.badge-novo2    { background: #0e0e0e;        color: #fff; }
+.badge-sale     { background: #e74c3c;        color: #fff; }
+
+.produto-info { padding: 1.25rem 1.5rem 1.5rem; }
+
+.produto-cat {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--roxo);
+  margin-bottom: 0.3rem;
+}
+
+.produto-nome {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--texto);
+}
+
+.produto-desc {
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+  margin-bottom: 1rem;
+}
+
+.produto-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.produto-preco {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--roxo);
+}
+
+.produto-preco span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--texto-muted);
+  text-decoration: line-through;
+  margin-right: 0.3rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+.tamanhos { display: flex; gap: 0.3rem; }
+
+.tam {
+  width: 28px; height: 28px;
+  border: 1px solid var(--borda);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--texto);
+  border-radius: 1px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tam:hover { border-color: var(--roxo); color: var(--roxo); }
+
+/* ============================================================
+   SEÇÃO SOBRE
+   ============================================================ */
+#sobre {
+  background: var(--roxo-bg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+  transition: background 0.3s;
+}
+
+.sobre-visual {
+  background: var(--roxo);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sobre-visual::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px; height: 400px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.sobre-visual::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px; height: 250px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+/* -------------------------------------------------------
+   LOGO NA SEÇÃO SOBRE
+   Aqui aparece a logo branca sobre fundo roxo.
+   Substitua o src no HTML por: OLGAR_-_PRETO_E_BRANCO.jpeg
+   (que é a versão branca no fundo preto — mas sobre roxo
+   funciona perfeitamente com filter: brightness para branco)
+   ------------------------------------------------------- */
+.sobre-logo {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  
+}
+
+.sobre-logo-sub {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sobre-texto {
+  padding: 6rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg-principal);
+  transition: background 0.3s;
+}
+
+.sobre-texto .secao-titulo { margin-bottom: 1.5rem; }
+
+.sobre-texto p {
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+.sobre-lista { list-style: none; margin: 1.5rem 0 2rem; }
+
+.sobre-lista li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--texto);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.sobre-lista li::before {
+  content: '✦';
+  color: var(--roxo);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SEÇÃO CONTATO
+   Fundo sempre escuro
+   ============================================================ */
+#contato {
+  background: #0e0e0e;
+  color: #fafaf8;
+}
+
+#contato .secao-titulo { color: #fafaf8; }
+#contato .secao-sub    { color: #888; }
+
+.contato-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin-top: 3rem;
+}
+
+.contato-form { display: flex; flex-direction: column; gap: 1rem; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.form-campo { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.form-campo label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.form-campo input,
+.form-campo select,
+.form-campo textarea {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 2px;
+  padding: 0.75rem 1rem;
+  color: #fafaf8;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+  outline: none;
+  resize: none;
+}
+
+.form-campo input:focus,
+.form-campo select:focus,
+.form-campo textarea:focus { border-color: var(--roxo-claro); }
+
+.form-campo select option { background: #1a1a1a; }
+
+.contato-info { display: flex; flex-direction: column; gap: 2rem; }
+
+.info-item {
+  padding: 1.5rem 2rem;
+  background: #1a1a1a;
+  border-left: 3px solid var(--roxo);
+  border-radius: 0 2px 2px 0;
+}
+
+.info-item .info-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--roxo-claro);
+  margin-bottom: 0.4rem;
+}
+
+.info-item .info-valor {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fafaf8;
+}
+
+.info-item .info-desc {
+  font-size: 0.82rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: #070707;
+  color: #555;
+  padding: 2.5rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  border-top: 1px solid #1a1a1a;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* -------------------------------------------------------
+   LOGO NO FOOTER
+   Substitua o src no HTML por: OLGAR_-_PRETO_E_BRANCO.jpeg
+   (versão branca — fundo do footer é quase preto)
+   ------------------------------------------------------- */
+.footer-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;                        /* garante que não suma */
+  filter: brightness(0) invert(1);      /* força branca sobre fundo escuro */
+  object-fit: contain;
+}
+
+.footer-links { display: flex; gap: 1.5rem; }
+
+.footer-links a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--roxo-claro); }
+
+/* ============================================================
+   BOTÃO FLUTUANTE WHATSAPP
+   ============================================================ */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  z-index: 200;
+  width: 56px; height: 56px;
+  background: #ffffff;                   /* fundo branco */
+  border-radius: 50%;
+  border: none;                          /* sem borda */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-size: 1.5rem;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
+   ANIMAÇÕES DE ENTRADA
+   ============================================================ */
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-left > * {
+  animation: floatUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.hero-left > *:nth-child(1) { animation-delay: 0.10s; }
+.hero-left > *:nth-child(2) { animation-delay: 0.25s; }
+.hero-left > *:nth-child(3) { animation-delay: 0.40s; }
+.hero-left > *:nth-child(4) { animation-delay: 0.55s; }
+.hero-left > *:nth-child(5) { animation-delay: 0.70s; }
+
+.hero-right {
+  animation: floatUp 0.8s ease 0.3s forwards;
+  opacity: 0;
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 7rem 2rem 3rem; }
+  .hero-right { display: none; }
+
+  section { padding: 4rem 2rem; }
+  .diferenciais-grid { grid-template-columns: 1fr 1fr; }
+  .produtos-grid { grid-template-columns: 1fr 1fr; }
+
+  #sobre { grid-template-columns: 1fr; }
+  .sobre-visual { padding: 4rem 2rem; }
+  .sobre-texto  { padding: 4rem 2rem; }
+
+  .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  footer { flex-direction: column; align-items: flex-start; padding: 2rem; }
+}
+
+@media (max-width: 600px) {
+  .diferenciais-grid { grid-template-columns: 1fr; }
+  .produtos-grid     { grid-template-columns: 1fr; }
+  .form-row          { grid-template-columns: 1fr; }
+  .hero-stats        { gap: 1.5rem; }
+}
+/* ============================================================
+   ÍCONE WHATSAPP — imagem dentro do botão flutuante
+   ============================================================ */
+.whatsapp-btn img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   ÍCONES DE CONTATO (WhatsApp e Instagram na seção contato)
+   ============================================================ */
+.icone-contato {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 0.4rem;
+  border-radius: 4px;
+}
+
+.info-valor {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fafaf8;
+}
+
+/* ============================================================
+   FOTOS DE PRODUTO — imagem dentro do card do catálogo
+   ============================================================ */
+.produto-img img {
+  width: 100%;
+  height: 320px;
+    object-fit: contain;
+  display: block;
+}
+
+
+
+/* ============================================================
+   CAMPOS OBRIGATÓRIOS — feedback visual
+   ============================================================ */
+
+/* Borda vermelha quando o campo for tocado e estiver vazio */
+.form-campo input:user-invalid,
+.form-campo select:user-invalid,
+.form-campo textarea:user-invalid {
+  border-color: #e74c3c;
+}
+
+/* Borda verde quando preenchido corretamente */
+.form-campo input:user-valid,
+.form-campo select:user-valid,
+.form-campo textarea:user-valid {
+  border-color: #1a8a4a;
+}
+
+/* Asterisco vermelho no label de campos obrigatórios */
+.form-campo input[required] + label,
+.form-campo label:has(+ input[required]),
+.form-campo label:has(+ select[required]),
+.form-campo label:has(+ textarea[required]) {
+  /* fallback — via JS abaixo */
+}
