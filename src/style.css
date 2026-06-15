@@ -1324,49 +1324,208 @@ footer {
   opacity: 0;
 }
 
-/* ============================================================
-   RESPONSIVO
-   ============================================================ */
-/* ============================================================
-   RESPONSIVO
-   ============================================================ */
-@media (max-width: 1024px) {
-  .hero-copa { grid-template-columns:1fr; padding:5rem 2rem 3rem; gap:1.5rem; }
-  .copa-hero-content { text-align:center; }
-  .copa-hero-sub { margin-left:auto; margin-right:auto; }
-  .copa-hero-btns { justify-content:center; }
-  .copa-contador { justify-content:center; }
-  .copa-carrossel-area { margin-top:2rem; }
+/* ==========================================================
+   RESPONSIVIDADE
+========================================================== */
 
-  .uniforme-item { grid-template-columns:1fr; }
-  .uniforme-img { max-width:300px; margin:0 auto; }
-  .uniforme-desc { max-width:100%; }
-  .uniforme-nome { text-align:center; }
-  .uniforme-pais { text-align:center; }
-  .uniforme-preco { text-align:center; }
-  .uniforme-tamanhos { justify-content:center; }
-  .uniforme-info { text-align:center; display:flex; flex-direction:column; align-items:center; }
-  .uniforme-info .btn-primario { align-self:center; }
+/* NOTEBOOK / TABLET */
+@media (max-width: 1200px){
 
-  .diferenciais-grid { grid-template-columns:repeat(2,1fr); }
-  .sobre-grid { grid-template-columns:1fr; gap:2rem; }
-  .contato-grid { grid-template-columns:1fr; }
-  nav { padding:1rem 1.5rem; }
+  .hero{
+    grid-template-columns: 420px 1fr;
+  }
+
+  .hero-conteudo{
+    padding: 4rem;
+  }
+
+  .hero-conteudo h1{
+    font-size: 4rem;
+  }
+
+  .sobre-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-texto{
+    padding: 5rem 3rem;
+  }
+
 }
 
-@media (max-width: 640px) {
-  .hero-copa { padding:5.5rem 1.5rem 3rem; }
-  .copa-slide { flex:0 0 calc(50% - 6px); }
-  .diferenciais-grid { grid-template-columns:1fr 1fr; }
-  nav .nav-links { display:none; }
-  .form-row { grid-template-columns:1fr; }
-  footer { flex-direction:column; text-align:center; }
-  .secao-inner { padding:0 1.25rem; }
+
+/* TABLET */
+@media (max-width: 992px){
+
+  .nav-links{
+    gap: 1.5rem;
+  }
+
+  .hero{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .hero-conteudo{
+    width:100%;
+    padding:4rem 2rem;
+  }
+
+  .hero-conteudo h1{
+    font-size:3.5rem;
+    line-height:1.1;
+  }
+
+  .hero-slider{
+    width:100%;
+  }
+
+  .catalogo-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .sobre-grid{
+    grid-template-columns:1fr;
+  }
+
+  .sobre-visual{
+    min-height:500px;
+  }
+
 }
 
-@media (max-width: 420px) {
-  .copa-slide { flex:0 0 calc(100% - 0px); }
-  .diferenciais-grid { grid-template-columns:1fr; }
+
+/* CELULAR */
+@media (max-width:768px){
+
+  section{
+    padding:4rem 0;
+  }
+
+  /* NAV */
+
+  .nav{
+    padding:1rem;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .btn-nav{
+    display:none;
+  }
+
+  /* HERO */
+
+  .hero{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .hero-conteudo{
+    padding:3rem 1.5rem;
+  }
+
+  .hero-conteudo h1{
+    font-size:2.8rem;
+  }
+
+  .hero-conteudo p{
+    font-size:1rem;
+  }
+
+  .hero-botoes{
+    flex-direction:column;
+  }
+
+  .hero-botoes a{
+    width:100%;
+  }
+
+  /* CARROSSEL */
+
+  .copa-track{
+    gap:16px;
+  }
+
+  .copa-slide{
+    flex:0 0 180px;
+    max-width:180px;
+  }
+
+  .copa-slide-img{
+    height:220px;
+  }
+
+  /* CATÁLOGO */
+
+  .catalogo-grid{
+    grid-template-columns:1fr;
+  }
+
+  /* SOBRE */
+
+  .sobre-grid{
+    grid-template-columns:1fr;
+  }
+
+  .sobre-visual{
+    padding:4rem 2rem;
+    min-height:350px;
+  }
+
+  .sobre-logo{
+    width:160px;
+  }
+
+  .sobre-texto{
+    padding:3rem 2rem;
+  }
+
+  .sobre-texto h2{
+    font-size:2.4rem;
+  }
+
+}
+
+
+/* CELULARES PEQUENOS */
+@media (max-width:480px){
+
+  html{
+    font-size:14px;
+  }
+
+  .hero-conteudo{
+    padding:2rem 1.25rem;
+  }
+
+  .hero-conteudo h1{
+    font-size:2.2rem;
+  }
+
+  .hero-conteudo p{
+    font-size:.95rem;
+  }
+
+  .copa-slide{
+    flex:0 0 150px;
+  }
+
+  .copa-slide-img{
+    height:180px;
+  }
+
+  .sobre-texto{
+    padding:2rem 1.5rem;
+  }
+
+  .sobre-texto h2{
+    font-size:2rem;
+  }
+
 }
 /* ============================================================
    ÍCONE WHATSAPP — imagem dentro do botão flutuante
