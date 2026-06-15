@@ -10,7 +10,10 @@
    ============================================================ */
 
 /* ===== FONTES ===== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Raleway:wght@300;400;500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 /* ===== RESET ===== */
 *, *::before, *::after {
@@ -31,13 +34,20 @@
   --roxo-claro:    #b06fd4;
   --roxo-bg:       #f5eefa;
 
+  /* Copa */
+  --copa-ouro:     #C8A84B;
+  --copa-ouro-claro: #e8c96a;
+  --copa-verde:    #1a6e3c;
+  --copa-dark:     #0a0a14;
+  --copa-grad:     linear-gradient(135deg, #0a0a14 0%, #1a1a3a 50%, #0e1a0e 100%);
+
   --bg-principal:  #fafaf8;
   --bg-secundario: #ffffff;
-  --bg-escura:     #0e0e0e;      /* seções escuras fixas */
   --bg-card:       #ffffff;
+  --bg-escura:     #0e0e0e;
 
   --texto:         #0e0e0e;
-  --texto-inv:     #fafaf8;      /* texto em fundos escuros */
+  --texto-inv:     #fafaf8;
   --texto-suave:   #666666;
   --texto-muted:   #888888;
 
@@ -46,25 +56,24 @@
 
   --nav-bg:        rgba(250, 250, 248, 0.92);
   --card-shadow:   0 20px 60px rgba(123, 63, 160, 0.15);
-
-  /* Logo que aparece no header (modo claro = logo colorida ou preta) */
-  --logo-nav: url('OLGAR_-_COLORIDO.jpeg');
-
-  /* Logo na seção Sobre */
-  --logo-sobre-filter: none;
 }
 
-/* --- MODO ESCURO --- */
 [data-theme="dark"] {
   --roxo:          #9f5ec7;
   --roxo-escuro:   #7B3FA0;
   --roxo-claro:    #c590e0;
   --roxo-bg:       #1e1228;
 
+  --copa-ouro:     #C8A84B;
+  --copa-ouro-claro: #e8c96a;
+  --copa-verde:    #1a6e3c;
+  --copa-dark:     #04040a;
+  --copa-grad:     linear-gradient(135deg, #04040a 0%, #10102a 50%, #060e06 100%);
+
   --bg-principal:  #111111;
   --bg-secundario: #1a1a1a;
-  --bg-escura:     #0a0a0a;
   --bg-card:       #1e1e1e;
+  --bg-escura:     #0a0a0a;
 
   --texto:         #f0f0ee;
   --texto-inv:     #f0f0ee;
@@ -75,7 +84,7 @@
   --borda-suave:   #2a2a2a;
 
   --nav-bg:        rgba(17, 17, 17, 0.95);
-  --card-shadow:   0 20px 60px rgba(0, 0, 0, 0.5);
+  --card-shadow:   0 20px 60px rgba(0,0,0,0.5);
 }
 
 /* ============================================================
@@ -91,22 +100,68 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+.secao-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
 /* ============================================================
    NAVEGAÇÃO
    ============================================================ */
 nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top:0; left:0; right:0;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 3rem;
   background: var(--nav-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--borda);
-  transition: background 0.3s, border-color 0.3s;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
+
+nav.nav-scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+
+.nav-logo { display:flex; align-items:center; text-decoration:none; }
+.nav-logo img { height:42px; width:auto; max-width:160px; object-fit:contain; display:block; }
+
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a {
+  text-decoration:none;
+  color: var(--texto);
+  font-size:0.82rem;
+  font-weight:600;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  transition:color 0.2s;
+}
+.nav-links a:hover { color: var(--copa-ouro); }
+
+.nav-cta {
+  background: var(--roxo) !important;
+  color: #fff !important;
+  padding: 0.5rem 1.4rem;
+  border-radius: 2px;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--roxo-escuro) !important; }
+
+.btn-tema {
+  background: transparent;
+  border: 1px solid var(--borda);
+  border-radius: 2px;
+  color: var(--texto);
+  cursor: pointer;
+  font-size: 1.1rem;
+  width: 36px; height: 36px;
+  display:flex; align-items:center; justify-content:center;
+  transition: all 0.2s;
+  margin-left: 1rem;
+}
+.btn-tema:hover { border-color: var(--copa-ouro); color: var(--copa-ouro); }
 
 /* -------------------------------------------------------
    LOGO NO NAV
@@ -191,187 +246,497 @@ nav {
 /* ============================================================
    HERO
    ============================================================ */
-.hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.hero-copa {
+  min-height: auto;
+  background: var(--copa-grad);
   position: relative;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 5.5rem 4rem 3.5rem;
 }
 
-.hero-left {
+/* fundo decorativo */
+.copa-bg { position:absolute; inset:0; pointer-events:none; z-index:0; }
+
+.copa-bg-orb {
+  position:absolute;
+  border-radius:50%;
+  filter: blur(80px);
+  opacity:0.18;
+}
+.copa-bg-orb1 {
+  width:500px; height:500px;
+  top:-100px; left:-100px;
+  background: var(--copa-ouro);
+}
+.copa-bg-orb2 {
+  width:400px; height:400px;
+  bottom:-80px; right:-80px;
+  background: var(--roxo);
+}
+.copa-bg-grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(200,168,75,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,75,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* conteúdo esquerdo */
+.copa-hero-content { position:relative; z-index:2; }
+
+.copa-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--copa-ouro);
+  border: 1px solid rgba(200,168,75,0.4);
+  padding: 0.35rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 1.6rem;
+  background: rgba(200,168,75,0.06);
+}
+.copa-badge-icon { font-size:1rem; }
+
+.copa-hero-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.2vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.08;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.copa-hero-titulo em {
+  color: var(--copa-ouro);
+  font-style: italic;
+}
+
+.copa-hero-sub {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  max-width: 400px;
+  margin-bottom: 1.8rem;
+  font-weight: 400;
+}
+
+.copa-hero-btns { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2rem; }
+
+.btn-copa-sec {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  border: 1px solid rgba(200,168,75,0.5);
+  color: var(--copa-ouro);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.2s;
+  background: rgba(200,168,75,0.06);
+}
+.btn-copa-sec:hover {
+  background: rgba(200,168,75,0.15);
+  border-color: var(--copa-ouro);
+}
+
+/* contador copa */
+.copa-contador {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 8rem 4rem 4rem 5rem;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(200,168,75,0.2);
+}
+.copa-stat { display:flex; flex-direction:column; }
+.copa-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--copa-ouro);
+  line-height:1;
+}
+.copa-stat-label {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.3rem;
+}
+.copa-stat-div {
+  width: 1px;
+  height: 36px;
+  background: rgba(200,168,75,0.25);
+}
+
+/* ── CARROSSEL COPA ── */
+.copa-carrossel-area {
   position: relative;
   z-index: 2;
 }
 
-.hero-tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--roxo);
-  border: 1px solid var(--roxo-claro);
-  padding: 0.3rem 0.9rem;
-  border-radius: 1px;
-  margin-bottom: 1.5rem;
-  width: fit-content;
-}
-
-.hero-titulo {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 5vw, 5rem);
-  line-height: 1.05;
-  font-weight: 900;
-  color: var(--texto);
-  margin-bottom: 1.5rem;
-}
-
-.hero-titulo em {
-  color: var(--roxo);
-  font-style: italic;
-}
-
-.hero-subtitulo {
-  font-size: 1rem;
-  color: var(--texto-suave);
-  line-height: 1.8;
-  max-width: 400px;
-  margin-bottom: 2.5rem;
-  font-weight: 400;
-}
-
-.hero-botoes {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.hero-stats {
-  display: flex;
-  gap: 2rem;
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--borda);
-}
-
-.stat { display: flex; flex-direction: column; }
-
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--roxo);
-  line-height: 1;
-}
-
-.stat-label {
+.copa-carrossel-titulo {
   font-size: 0.72rem;
-  color: var(--texto-muted);
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-top: 0.25rem;
+  color: var(--copa-ouro);
+  margin-bottom: 1.2rem;
+  text-align: center;
 }
 
-.hero-right {
-  background: var(--roxo-bg);
+.copa-carrossel-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copa-carrossel-viewport {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.copa-carrossel-track {
+  display: flex;
+  gap: 12px;
+  transition: transform 0.45s cubic-bezier(0.25,0.8,0.25,1);
+  will-change: transform;
+}
+
+/* slide */
+.copa-slide {
+  flex: 0 0 calc(33.333% - 8px);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(200,168,75,0.18);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.copa-slide:hover {
+  transform: translateY(-3px);
+  border-color: rgba(200,168,75,0.5);
+}
+/* slide */
+.copa-slide {
+  flex: 0 0 220px; /* largura fixa */
+  max-width: 220px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(200,168,75,0.18);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* área da imagem */
+.copa-slide-img {
+  width: 100%;
+  height: 260px; /* controla o tamanho */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* imagem */
+.copa-slide-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* importante */
+  object-position: center;
+  display: block;
+}
+
+
+
+
+.copa-slide:hover .copa-slide-img img { transform:scale(1.05); }
+
+.copa-slide-info {
+  padding: 0.55rem 0.7rem 0.75rem;
+}
+.copa-slide-pais {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+.copa-slide-tipo {
+  font-size: 0.66rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing:0.1em;
+  margin-top:0.15rem;
+}
+.copa-slide-preco {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--copa-ouro);
+  margin-top: 0.4rem;
+}
+
+/* botões do carrossel */
+.copa-carr-btn {
+  background: rgba(200,168,75,0.1);
+  border: 1px solid rgba(200,168,75,0.3);
+  color: var(--copa-ouro);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height:1;
+  cursor: pointer;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  transition: all 0.2s;
+}
+.copa-carr-btn:hover { background:rgba(200,168,75,0.25); border-color:var(--copa-ouro); }
+
+/* dots */
+.copa-carrossel-dots {
+  display:flex; justify-content:center; gap:6px; margin-top:1rem;
+}
+.copa-dot {
+  width:6px; height:6px;
+  border-radius:50%;
+  background: rgba(200,168,75,0.25);
+  border:none; cursor:pointer; padding:0;
+  transition: all 0.2s;
+}
+.copa-dot.ativo {
+  background: var(--copa-ouro);
+  width:18px; border-radius:3px;
+}
+
+
+/* ============================================================
+   SEÇÃO COPA — visualizador de seleções
+   ============================================================ */
+.secao-copa {
+  background: var(--copa-grad);
+  padding: 6rem 0;
   position: relative;
   overflow: hidden;
-  padding: 6rem 3rem 3rem;
-  transition: background 0.3s;
+}
+.secao-copa::before {
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(200,168,75,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,75,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events:none;
 }
 
-.hero-right::before {
-  content: '';
-  position: absolute;
-  top: -80px; right: -80px;
-  width: 300px; height: 300px;
-  border: 40px solid rgba(123, 63, 160, 0.12);
-  border-radius: 50%;
+.secao-copa .secao-inner { position:relative; z-index:1; }
+
+.copa-tag {
+  color: var(--copa-ouro) !important;
+  border-color: rgba(200,168,75,0.35) !important;
+  background: rgba(200,168,75,0.06) !important;
 }
 
-.hero-right::after {
-  content: '';
-  position: absolute;
-  bottom: -40px; left: -40px;
-  width: 180px; height: 180px;
-  border: 25px solid rgba(123, 63, 160, 0.08);
-  border-radius: 50%;
+.secao-copa .secao-titulo { color:#fff; }
+.secao-copa .secao-titulo em { color: var(--copa-ouro); }
+.secao-copa .secao-sub { color: rgba(255,255,255,0.55); }
+
+/* abas de seleção */
+.selecao-abas-wrap {
+  overflow-x: auto;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200,168,75,0.3) transparent;
+}
+.selecao-abas-wrap::-webkit-scrollbar { height:3px; }
+.selecao-abas-wrap::-webkit-scrollbar-track { background:transparent; }
+.selecao-abas-wrap::-webkit-scrollbar-thumb { background:rgba(200,168,75,0.4); border-radius:2px; }
+
+.selecao-abas {
+  display: flex;
+  gap: 0.5rem;
+  white-space: nowrap;
+  padding: 0.25rem 0;
 }
 
-.hero-card {
-  background: var(--bg-card);
-  border-radius: 4px;
+.selecao-aba {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(200,168,75,0.2);
+  color: rgba(255,255,255,0.65);
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.selecao-aba:hover {
+  background: rgba(200,168,75,0.12);
+  color: #fff;
+  border-color: rgba(200,168,75,0.4);
+}
+.selecao-aba.ativa {
+  background: var(--copa-ouro);
+  border-color: var(--copa-ouro);
+  color: #000;
+  font-weight: 700;
+}
+
+/* viewer de uniforme */
+.selecao-viewer { position:relative; }
+
+.selecao-card {
+  display: none;
+  animation: fadeIn 0.35s ease;
+}
+.selecao-card.ativa { display:block; }
+
+@keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* layout uniforme */
+.uniforme-viewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* linha principal/visitante: imagem + info lado a lado */
+.uniforme-item {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 3rem;
+  align-items: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(200,168,75,0.2);
+  border-radius: 12px;
   padding: 2.5rem;
   width: 100%;
-  max-width: 380px;
-  position: relative;
-  z-index: 1;
-  box-shadow: var(--card-shadow);
-  transition: background 0.3s;
+  transition: border-color 0.3s;
 }
+.uniforme-item:hover { border-color:rgba(200,168,75,0.4); }
+.uniforme-item.oculto { display:none; }
+.uniforme-item.entrando { animation: fadeIn 0.35s ease; }
 
-.camisa-destaque {
-  width: 100%;
-  height: 320px;
-  background: var(--roxo-bg);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  font-size: 7rem;
+.uniforme-img {
   position: relative;
+  border-radius: 8px;
   overflow: hidden;
-  border: 1px solid var(--borda);
+  aspect-ratio: 3/4;
+  background: rgba(255,255,255,0.04);
 }
-
-.badge-novo {
-  position: absolute;
-  top: 1rem; right: 1rem;
+.uniforme-img img {
+  width:100%; height:100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display:block;
+}
+.uniforme-badge {
+  position:absolute;
+  top:12px; left:12px;
+  background: var(--copa-ouro);
+  color: #000;
+  font-size:0.65rem;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:0.3rem 0.7rem;
+  border-radius:2px;
+  z-index:2;
+}
+.uniforme-badge.visitante {
   background: var(--roxo);
-  color: #fff;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.3rem 0.7rem;
-  border-radius: 1px;
+  color:#fff;
 }
 
-.camisa-info h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-  color: var(--texto);
+/* info do uniforme */
+.uniforme-info {}
+.uniforme-pais {
+  font-size:0.75rem;
+  font-weight:600;
+  color: var(--copa-ouro);
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  margin-bottom:0.6rem;
 }
+.uniforme-nome {
+  font-family:'Playfair Display', serif;
+  font-size: clamp(1.8rem,3vw,2.8rem);
+  font-weight:900;
+  color:#fff;
+  margin-bottom:1rem;
+  line-height:1.1;
+}
+.uniforme-desc {
+  font-size:0.95rem;
+  color:rgba(255,255,255,0.6);
+  line-height:1.8;
+  margin-bottom:1.5rem;
+  max-width:400px;
+}
+.uniforme-preco {
+  font-family:'Playfair Display', serif;
+  font-size:2.2rem;
+  font-weight:700;
+  color: var(--copa-ouro);
+  margin-bottom:1.2rem;
+}
+.uniforme-tamanhos {
+  display:flex; gap:0.5rem; margin-bottom:1.5rem;
+}
+.tam {
+  width:36px; height:36px;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid rgba(200,168,75,0.35);
+  color:rgba(255,255,255,0.7);
+  font-size:0.75rem;
+  font-weight:600;
+  border-radius:3px;
+  cursor:pointer;
+  transition: all 0.15s;
+}
+.tam:hover { border-color:var(--copa-ouro); color:#fff; background:rgba(200,168,75,0.1); }
 
-.camisa-info p {
-  font-size: 0.82rem;
-  color: var(--texto-muted);
+/* botão trocar uniforme */
+.uniforme-nav {
+  display:flex;
+  justify-content:center;
+  width:100%;
 }
-
-.camisa-preco {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 1rem;
+.uniforme-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:0.6rem;
+  background: rgba(200,168,75,0.1);
+  border:1px solid rgba(200,168,75,0.35);
+  color: var(--copa-ouro);
+  font-family:'Raleway', sans-serif;
+  font-size:0.82rem;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:0.7rem 1.8rem;
+  border-radius:2px;
+  cursor:pointer;
+  transition:all 0.2s;
 }
-
-.preco {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--roxo);
+.uniforme-btn:hover {
+  background:rgba(200,168,75,0.2);
+  border-color:var(--copa-ouro);
+  transform:translateY(-1px);
 }
+.uniforme-btn-icon { font-size:1.1rem; transition:transform 0.2s; }
 
 /* ============================================================
    BOTÕES GLOBAIS
