@@ -1324,208 +1324,58 @@ footer {
   opacity: 0;
 }
 
-/* ==========================================================
-   RESPONSIVIDADE
-========================================================== */
+/* ============================================================
+   RESPONSIVIDADE (Ajustada para os seletores atuais)
+   ============================================================ */
 
-/* NOTEBOOK / TABLET */
-@media (max-width: 1200px){
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
 
-  .hero{
-    grid-template-columns: 420px 1fr;
-  }
+  /* Hero Copa 2026 */
+  .hero-copa { grid-template-columns: 1fr; padding: 7rem 2rem 3rem; }
+  .copa-hero-content { padding: 0; }
+  .copa-carrossel-area { margin-top: 3rem; }
 
-  .hero-conteudo{
-    padding: 4rem;
-  }
+  section { padding: 4rem 2rem; }
+  .diferenciais-grid { grid-template-columns: 1fr 1fr; }
+  .produtos-grid { grid-template-columns: 1fr 1fr; }
 
-  .hero-conteudo h1{
-    font-size: 4rem;
-  }
+  /* Sobre */
+  #sobre { grid-template-columns: 1fr; }
+  .sobre-visual { padding: 4rem 2rem; min-height: 350px; }
+  .sobre-texto  { padding: 4rem 2rem; }
 
-  .sobre-grid{
-    grid-template-columns: 1fr;
-  }
-
-  .sobre-texto{
-    padding: 5rem 3rem;
-  }
-
-}
-
-
-/* TABLET */
-@media (max-width: 992px){
-
-  .nav-links{
+  /* Contato */
+  .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  
+  footer { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    padding: 2rem; 
     gap: 1.5rem;
   }
-
-  .hero{
-    display:flex;
-    flex-direction:column;
-  }
-
-  .hero-conteudo{
-    width:100%;
-    padding:4rem 2rem;
-  }
-
-  .hero-conteudo h1{
-    font-size:3.5rem;
-    line-height:1.1;
-  }
-
-  .hero-slider{
-    width:100%;
-  }
-
-  .catalogo-grid{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .sobre-grid{
-    grid-template-columns:1fr;
-  }
-
-  .sobre-visual{
-    min-height:500px;
-  }
-
+  .footer-links { flex-direction: column; gap: 1rem; }
 }
 
-
-/* CELULAR */
-@media (max-width:768px){
-
-  section{
-    padding:4rem 0;
+@media (max-width: 600px) {
+  .diferenciais-grid { grid-template-columns: 1fr; }
+  .produtos-grid     { grid-template-columns: 1fr; }
+  .form-row          { grid-template-columns: 1fr; }
+  .copa-contador     { flex-wrap: wrap; gap: 1.5rem; }
+  .copa-stat-div     { display: none; }
+  
+  .copa-hero-titulo { font-size: 2.5rem; }
+  .secao-titulo { font-size: 2rem; }
+  
+  /* Ajuste do carrossel no mobile */
+  .copa-slide {
+    flex: 0 0 160px;
+    max-width: 160px;
   }
-
-  /* NAV */
-
-  .nav{
-    padding:1rem;
+  .copa-slide-img {
+    height: 180px;
   }
-
-  .nav-links{
-    display:none;
-  }
-
-  .btn-nav{
-    display:none;
-  }
-
-  /* HERO */
-
-  .hero{
-    display:flex;
-    flex-direction:column;
-  }
-
-  .hero-conteudo{
-    padding:3rem 1.5rem;
-  }
-
-  .hero-conteudo h1{
-    font-size:2.8rem;
-  }
-
-  .hero-conteudo p{
-    font-size:1rem;
-  }
-
-  .hero-botoes{
-    flex-direction:column;
-  }
-
-  .hero-botoes a{
-    width:100%;
-  }
-
-  /* CARROSSEL */
-
-  .copa-track{
-    gap:16px;
-  }
-
-  .copa-slide{
-    flex:0 0 180px;
-    max-width:180px;
-  }
-
-  .copa-slide-img{
-    height:220px;
-  }
-
-  /* CATÁLOGO */
-
-  .catalogo-grid{
-    grid-template-columns:1fr;
-  }
-
-  /* SOBRE */
-
-  .sobre-grid{
-    grid-template-columns:1fr;
-  }
-
-  .sobre-visual{
-    padding:4rem 2rem;
-    min-height:350px;
-  }
-
-  .sobre-logo{
-    width:160px;
-  }
-
-  .sobre-texto{
-    padding:3rem 2rem;
-  }
-
-  .sobre-texto h2{
-    font-size:2.4rem;
-  }
-
-}
-
-
-/* CELULARES PEQUENOS */
-@media (max-width:480px){
-
-  html{
-    font-size:14px;
-  }
-
-  .hero-conteudo{
-    padding:2rem 1.25rem;
-  }
-
-  .hero-conteudo h1{
-    font-size:2.2rem;
-  }
-
-  .hero-conteudo p{
-    font-size:.95rem;
-  }
-
-  .copa-slide{
-    flex:0 0 150px;
-  }
-
-  .copa-slide-img{
-    height:180px;
-  }
-
-  .sobre-texto{
-    padding:2rem 1.5rem;
-  }
-
-  .sobre-texto h2{
-    font-size:2rem;
-  }
-
 }
 /* ============================================================
    ÍCONE WHATSAPP — imagem dentro do botão flutuante
