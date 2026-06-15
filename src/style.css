@@ -1327,31 +1327,46 @@ footer {
 /* ============================================================
    RESPONSIVO
    ============================================================ */
-@media (max-width: 900px) {
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width: 1024px) {
+  .hero-copa { grid-template-columns:1fr; padding:5rem 2rem 3rem; gap:1.5rem; }
+  .copa-hero-content { text-align:center; }
+  .copa-hero-sub { margin-left:auto; margin-right:auto; }
+  .copa-hero-btns { justify-content:center; }
+  .copa-contador { justify-content:center; }
+  .copa-carrossel-area { margin-top:2rem; }
 
-  .hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 7rem 2rem 3rem; }
-  .hero-right { display: none; }
+  .uniforme-item { grid-template-columns:1fr; }
+  .uniforme-img { max-width:300px; margin:0 auto; }
+  .uniforme-desc { max-width:100%; }
+  .uniforme-nome { text-align:center; }
+  .uniforme-pais { text-align:center; }
+  .uniforme-preco { text-align:center; }
+  .uniforme-tamanhos { justify-content:center; }
+  .uniforme-info { text-align:center; display:flex; flex-direction:column; align-items:center; }
+  .uniforme-info .btn-primario { align-self:center; }
 
-  section { padding: 4rem 2rem; }
-  .diferenciais-grid { grid-template-columns: 1fr 1fr; }
-  .produtos-grid { grid-template-columns: 1fr 1fr; }
-
-  #sobre { grid-template-columns: 1fr; }
-  .sobre-visual { padding: 4rem 2rem; }
-  .sobre-texto  { padding: 4rem 2rem; }
-
-  .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  footer { flex-direction: column; align-items: flex-start; padding: 2rem; }
+  .diferenciais-grid { grid-template-columns:repeat(2,1fr); }
+  .sobre-grid { grid-template-columns:1fr; gap:2rem; }
+  .contato-grid { grid-template-columns:1fr; }
+  nav { padding:1rem 1.5rem; }
 }
 
-@media (max-width: 600px) {
-  .diferenciais-grid { grid-template-columns: 1fr; }
-  .produtos-grid     { grid-template-columns: 1fr; }
-  .form-row          { grid-template-columns: 1fr; }
-  .hero-stats        { gap: 1.5rem; }
+@media (max-width: 640px) {
+  .hero-copa { padding:5.5rem 1.5rem 3rem; }
+  .copa-slide { flex:0 0 calc(50% - 6px); }
+  .diferenciais-grid { grid-template-columns:1fr 1fr; }
+  nav .nav-links { display:none; }
+  .form-row { grid-template-columns:1fr; }
+  footer { flex-direction:column; text-align:center; }
+  .secao-inner { padding:0 1.25rem; }
+}
+
+@media (max-width: 420px) {
+  .copa-slide { flex:0 0 calc(100% - 0px); }
+  .diferenciais-grid { grid-template-columns:1fr; }
 }
 /* ============================================================
    ÍCONE WHATSAPP — imagem dentro do botão flutuante
