@@ -1376,6 +1376,50 @@ footer {
   .copa-slide-img {
     height: 180px;
   }
+
+  /* --- SEÇÃO COPA (Visualizador de Uniformes) --- */
+  .secao-copa { padding: 4rem 0; }
+  
+  .uniforme-item {
+    grid-template-columns: 1fr; /* Empilha imagem e texto */
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .uniforme-img {
+    width: 100%;
+    max-width: 280px; /* Limita tamanho da imagem no mobile */
+    margin: 0 auto;
+  }
+
+  .uniforme-info {
+    text-align: center; /* Centraliza textos no mobile */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .uniforme-nome {
+    font-size: 1.8rem;
+  }
+
+  .uniforme-desc {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .uniforme-preco {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .uniforme-tamanhos {
+    justify-content: center;
+  }
+
+  .selecao-abas-wrap {
+    margin-bottom: 1.5rem;
+  }
 }
 /* ============================================================
    ÍCONE WHATSAPP — imagem dentro do botão flutuante
