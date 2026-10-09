@@ -354,17 +354,31 @@
   </div>
 </footer>
 
-<!-- MODAL — TABELA DE MEDIDAS -->
-<div class="medidas-modal" id="medidasModal">
+<!-- MODAL — TABELA DE MEDIDAS (carrossel manual) -->
+<div class="medidas-modal" id="medidasModal" role="dialog" aria-modal="true" aria-label="Tabela de medidas">
   <div class="medidas-modal-overlay" onclick="fecharMedidas()"></div>
   <div class="medidas-modal-conteudo">
     <button type="button" class="medidas-modal-fechar" onclick="fecharMedidas()" aria-label="Fechar">✕</button>
-    
-    <img src="img/site/medida_torcedor.jpg" alt="Tabela de medidas das camisas OLGAR Imports">
-     <img src="img/site/medida_jogador.jpg" alt="Tabela de medidas das camisas OLGAR Imports">
-      <img src="img/site/medida_feminina.jpg" alt="Tabela de medidas das camisas OLGAR Imports">
-       <img src="img/site/medida_infantil.jpg" alt="Tabela de medidas das camisas OLGAR Imports">
-        <img src="img/site/medida_retro.jpg" alt="Tabela de medidas das camisas OLGAR Imports">
+
+    <h3 class="medidas-modal-titulo" id="medidasTitulo">Tabela de medidas</h3>
+
+    <div class="medidas-carrossel">
+      <button type="button" class="medidas-seta medidas-seta-esq" onclick="moverMedidas(-1)" aria-label="Tabela anterior">&#8249;</button>
+
+      <div class="medidas-viewport" id="medidasViewport">
+        <div class="medidas-track" id="medidasTrack">
+          <img src="img/site/medida_torcedor.jpg" data-titulo="Torcedor"  alt="Tabela de medidas — Torcedor">
+          <img src="img/site/medida_jogador.jpg"  data-titulo="Jogador"   alt="Tabela de medidas — Jogador">
+          <img src="img/site/medida_feminina.jpg" data-titulo="Feminina"  alt="Tabela de medidas — Feminina">
+          <img src="img/site/medida_infantil.jpg" data-titulo="Infantil"  alt="Tabela de medidas — Infantil">
+          <img src="img/site/medida_retro.jpg"    data-titulo="Retrô"     alt="Tabela de medidas — Retrô">
+        </div>
+      </div>
+
+      <button type="button" class="medidas-seta medidas-seta-dir" onclick="moverMedidas(1)" aria-label="Próxima tabela">&#8250;</button>
+    </div>
+
+    <div class="medidas-dots" id="medidasDots"></div>
   </div>
 </div>
 

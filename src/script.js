@@ -87,11 +87,46 @@ const CLUBES = [
 })();
 
 /* ============================================================
-   MODAL — TABELA DE MEDIDAS
+   MODAL — TABELA DE MEDIDAS (carrossel manual)
+   Setas, bolinhas, teclado (← →) e arrastar com o dedo.
+   Para adicionar outra tabela: basta incluir mais uma <img data-titulo="...">
+   dentro de #medidasTrack no index.html.
    ============================================================ */
+let medidasAtual = 0;
+
+function medidasImgs() {
+  return document.querySelectorAll('#medidasTrack img');
+}
+
+function atualizarMedidas() {
+  const track  = document.getElementById('medidasTrack');
+  const titulo = document.getElementById('medidasTitulo');
+  const imgs   = medidasImgs();
+  if (!track || !imgs.length) return;
+
+  track.style.transform = `translateX(-${medidasAtual * 100}%)`;
+  if (titulo) titulo.textContent = 'Medidas — ' + (imgs[medidasAtual].dataset.titulo || '');
+
+  document.querySelectorAll('#medidasDots .medidas-dot').forEach((d, i) => {
+    d.classList.toggle('ativo', i === medidasAtual);
+  });
+}
+
+window.irParaMedida = function(i) {
+  const total = medidasImgs().length;
+  if (!total) return;
+  medidasAtual = (i + total) % total;   /* volta ao início/fim */
+  atualizarMedidas();
+};
+
+window.moverMedidas = function(dir) {
+  window.irParaMedida(medidasAtual + dir);
+};
+
 window.abrirMedidas = function() {
   document.getElementById('medidasModal')?.classList.add('aberto');
   document.body.style.overflow = 'hidden';
+  window.irParaMedida(0);               /* sempre abre na primeira tabela */
 };
 
 window.fecharMedidas = function() {
@@ -100,7 +135,39 @@ window.fecharMedidas = function() {
 };
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') window.fecharMedidas();
+  const aberto = document.getElementById('medidasModal')?.classList.contains('aberto');
+  if (!aberto) return;
+  if (e.key === 'Escape')     window.fecharMedidas();
+  if (e.key === 'ArrowLeft')  window.moverMedidas(-1);
+  if (e.key === 'ArrowRight') window.moverMedidas(1);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  /* Bolinhas */
+  const dotsEl = document.getElementById('medidasDots');
+  if (dotsEl) {
+    medidasImgs().forEach((img, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'medidas-dot' + (i === 0 ? ' ativo' : '');
+      dot.setAttribute('aria-label', 'Ver tabela ' + (img.dataset.titulo || (i + 1)));
+      dot.addEventListener('click', () => window.irParaMedida(i));
+      dotsEl.appendChild(dot);
+    });
+  }
+
+  /* Arrastar com o dedo (celular) */
+  const viewport = document.getElementById('medidasViewport');
+  let inicioX = null;
+  viewport?.addEventListener('touchstart', (e) => { inicioX = e.touches[0].clientX; }, { passive: true });
+  viewport?.addEventListener('touchend', (e) => {
+    if (inicioX === null) return;
+    const dx = e.changedTouches[0].clientX - inicioX;
+    inicioX = null;
+    if (Math.abs(dx) > 40) window.moverMedidas(dx < 0 ? 1 : -1);
+  });
+
+  atualizarMedidas();
 });
 
 /* ============================================================
